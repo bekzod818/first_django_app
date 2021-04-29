@@ -1,0 +1,12 @@
+{% extends 'news/base.html' %}
+
+{% block title %} Asosiy sahifadasiz {{ f_name }} {% endblock %}
+
+{% block content %}
+    <h1>Asosiy sahifa</h1>
+    <ul>
+        <li>ISM: {{ f_name }}</li>
+        <li>FAMILIYA: - {{ l_name }}</li>
+        <li>YILI: {{ year }}</li>
+    </ul>
+{% endblock %}
