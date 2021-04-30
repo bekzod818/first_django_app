@@ -1,14 +1,28 @@
 <!doctype html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{% block title %} {% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'news/css/styles.css' %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 </head>
 <body>
-  {% block content %}
-  {% endblock %}
+    <ul>
+      <li><img src="{% static 'news/images/news.png' %}" alt="news"></li>
+      <li><a class="active" href="{% url 'index' %}"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="{% url 'news' %}"><i class="fas fa-newspaper"></i> News</a></li>
+      <li><a href="{% url 'about' %}"><i class="fas fa-address-card"></i> About</a></li>
+      <li><a href="#"><i class="fas fa-paper-plane"></i> Contact</a></li>
+      <li><a href="#"><i class="fas fa-plus-circle"></i> Add</a></li>
+    </ul>
+    
+    <div style="margin-left:25%;padding:1px 16px;height:1000px;">
+        {% block content %}
+        {% endblock %}
+    </div>>
+
 </body>
 </html>
