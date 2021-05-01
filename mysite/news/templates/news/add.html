@@ -1,0 +1,16 @@
+{% extends 'news/base.html' %}
+
+{% block title %} Yangiliklar qo'shish {% endblock %}
+
+{% block content %}
+    <div style="margin-left: 27%; width: 500px; margin-top: 50px;">
+        <h1>Yangilik qo'shish</h1>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.title }}
+            {{ form.content }}
+            <span>{{ error }}</span>
+        </form>
+        <button class="button" type="submit">Qo'shish</button>
+    </div>
+{% endblock %}
