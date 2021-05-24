@@ -1,0 +1,51 @@
+{% extends 'enroll/base.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-sm-4">
+            <h3 class="text-center alert alert-info">Add New Student</h3>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" class="btn btn-success" value="Add">
+            </form>
+        </div>
+        <div class="col-sm-7 offset-1">
+            <h3 class="text-center alert alert-info">Show Student Information</h3>
+            {% if stud %}
+                <!-- <h4 class="text-center">Table Data</h4> -->
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Password</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for stu in stud %}
+                        <tr>
+                            <th scope="row">{{ stu.id }}</th>
+                            <td>{{ stu.name }}</td>
+                            <td>{{ stu.email }}</td>
+                            <td>{{ stu.password }}</td>
+                            <td>
+                                <a href="{% url 'updatedata' stu.id %}" class="btn btn-warning">Edit</a>
+                                <form action="{% url 'deletedata' stu.id %}" method="post" class="d-inline">
+                                    {% csrf_token %}
+                                    <input type="submit" value="Delete" class="btn btn-danger">
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <h4 class="text-center alert alert-warning">No Records</h4>
+            {% endif %}
+
+        </div>
+    </div>
+{% endblock %}
